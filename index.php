@@ -30,6 +30,18 @@ function zadanie2($zakres){
         }
     }
 }
+function zadanie3($N){
+    $ciag = [0,0,1];
+    if ($N > 3){
+        for($i = 3; $i < $N; $i++){
+            $ciag[$i]=$ciag[$i-1]+$ciag[$i-2];
+        }
+    }
+    for($i = 1, $j = 1; $i < $N; $i += 2, $j++){
+        echo $j.": ".$ciag[$i]."\n";
+    }
+}
 zadanie1();
 zadanie2(100);
+zadanie3(3);
 ?>
