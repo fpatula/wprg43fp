@@ -37,11 +37,60 @@ function zadanie3($N){
             $ciag[$i]=$ciag[$i-1]+$ciag[$i-2];
         }
     }
-    for($i = 1, $j = 1; $i < $N; $i += 2, $j++){
+    for($i = 0, $j = 1; $i < $N; $i += 2, $j++){
         echo $j.": ".$ciag[$i]."\n";
     }
 }
+function zadanie4(){
+    $tekst = explode(" ","\"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+        galley of type and scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
+        popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+        and more recently with desktop publishing software like Aldus PageMaker including versions of
+        Lorem Ipsum.");
+    $ilosc = sizeof($tekst);
+    for($i = 0; $i < $ilosc; $i++){
+        $znak = false;
+        $slowo = $tekst[$i];
+        $dlugosc = strlen($slowo);
+        for ($j = $dlugosc - 1; $j > -1; $j--) {
+            if ($slowo[$j] == "," ||
+                $slowo[$j] == "." ||
+                $slowo[$j] == "'" ||
+                $slowo[$j] == '"' ||
+                $slowo[$j] == ";") {
+                $znak = true;
+                $ilosc -= 1;
+                break;
+            }
+        }
+        if ($znak){
+            for ($j = $i + 1; $j < $ilosc; $j++){
+                $tekst[$j-1] = $tekst[$j];
+            }
+            $tekst[$ilosc - 1] = "";
+        }
+    }
+    foreach ($tekst as $klucz ){
+        echo $klucz."\n";
+    }
+//    $k = "";
+//    $tablica = [];
+//    foreach ($tekst as $klucz => $wartosc){
+//        if ($klucz%2 == 0){
+//            $k = $wartosc;
+//        } else {
+//            $tablica[$k] = $wartosc;
+//        }
+//    }
+//    foreach ($tablica as $klucz => $wartosc){
+//        echo $klucz.":".$wartosc."\n";
+//    }
+}
+
 zadanie1();
 zadanie2(100);
 zadanie3(3);
+zadanie4();
 ?>
