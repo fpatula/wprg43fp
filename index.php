@@ -12,5 +12,24 @@ function zadanie1(){
         echo $cowo."\n";
     }
 }
+function zadanie2($zakres){
+    if ($zakres < 2){
+        return;
+    }
+    for($i = 2; $i <= $zakres; $i++){
+        $pierwsza = true;
+        $pierwiastek = round(sqrt($i));
+        for ($j = 2; $j <= $pierwiastek; $j++){
+            if ($i%$j==0){
+                $pierwsza = false;
+                break;
+            }
+        }
+        if ($pierwsza){
+            echo $i."\n";
+        }
+    }
+}
 zadanie1();
+zadanie2(100);
 ?>
